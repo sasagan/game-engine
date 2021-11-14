@@ -10,25 +10,30 @@
 class Plane
 {
 public:
-	float rotate[4] = {0, 0, 0, 0};
-	float size[2] = {0, 0};
-	float position[3] = {0, 0, 0};
-	float color[3] = {0, 0, 0};
+	float rotate[3] = { 0, 0, 0 };
+	float size[2] = { 0, 0 };
+	float position[3] = { 0, 0, 0 };
+	float color[3] = { 0, 0, 0 };
+
+
+	void rotation()
+	{
+		glRotatef(rotate[0], 1.0, 0.0, 0.0); // x axis
+		glRotatef(rotate[1], 0.0, 1.0, 0.0); // y axis
+		glRotatef(rotate[2], 0.0, 0.0, 1.0); // z axis
+	}
 
 	void render()
 	{
-		
-		
+		glPushMatrix();
+		rotation();
 		glBegin(GL_QUADS);
-		
 		glColor3f(color[0], color[1], color[2]);
-		
-		glVertex3f(position[0] - size[0] / 2, position[1] - size[1] / 2, position[2]);
-		glVertex3f(position[0] - size[0] / 2, position[1] + size[1] / 2, position[2]);
-		glVertex3f(position[0] + size[0] / 2, position[1] + size[1] / 2, position[2]);
-		glVertex3f(position[0] + size[0] / 2, position[1] - size[1] / 2, position[2]);
-		glRotatef(rotate[0], rotate[1], rotate[2], rotate[3]);
+		  glVertex3f(position[0] - size[0] / 2, position[1] - size[1] / 2, position[2]);
+		  glVertex3f(position[0] - size[0] / 2, position[1] + size[1] / 2, position[2]);
+		  glVertex3f(position[0] + size[0] / 2, position[1] + size[1] / 2, position[2]);
+		  glVertex3f(position[0] + size[0] / 2, position[1] - size[1] / 2, position[2]);
 		glEnd();
+		glPopMatrix();
 	}
 };
-

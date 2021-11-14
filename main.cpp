@@ -35,31 +35,31 @@ void plane()
 void cube()
 {
 	glBegin(GL_QUADS);
-	glColor3f(1.0, 0.0, 0.0);	//передн€€ грань
+	glColor3f(1.0, 0.0, 0.0);	
 	glVertex3f(-0.5, 0.5, -0.5);
 	glVertex3f(0.5, 0.5, -0.5);
 	glVertex3f(0.5, -0.5, -0.5);
 	glVertex3f(-0.5, -0.5, -0.5);
 
-	glColor3f(0.0, 1.0, 0.0);	//лева€ грань
+	glColor3f(0.0, 1.0, 0.0);	
 	glVertex3f(-0.5, 0.5, -0.5);
 	glVertex3f(-0.5, -0.5, -0.5);
 	glVertex3f(-0.5, -0.5, 0.5);
 	glVertex3f(-0.5, 0.5, 0.5);
 
-	glColor3f(0.0, 0.0, 1.0);	//права€ грань
+	glColor3f(0.0, 0.0, 1.0);	
 	glVertex3f(0.5, 0.5, -0.5);
 	glVertex3f(0.5, -0.5, -0.5);
 	glVertex3f(0.5, -0.5, 0.5);
 	glVertex3f(0.5, 0.5, 0.5);
 
-	glColor3f(1.0, 1.0, 0.0);	//нижн€€ грань
+	glColor3f(1.0, 1.0, 0.0);	
 	glVertex3f(0.5, -0.5, -0.5);
 	glVertex3f(-0.5, -0.5, -0.5);
 	glVertex3f(-0.5, -0.5, 0.5);
 	glVertex3f(0.5, -0.5, 0.5);
 
-	glColor3f(1.0, 1.0, 1.0);	//верхн€€ грань
+	glColor3f(1.0, 1.0, 1.0);	
 	glVertex3f(-0.5, 0.5, -0.5);
 	glVertex3f(0.5, 0.5, -0.5);
 	glVertex3f(0.5, 0.5, 0.5);
@@ -76,31 +76,31 @@ void cube()
 void object()
 {
 	glBegin(GL_QUADS);
-	glColor3f(1.0, 0.0, 0.0);	//передн€€ грань
+	glColor3f(1.0, 0.0, 0.0);	
 	glVertex3f(-0.5, 0.5, 1.5);
 	glVertex3f(0.5, 0.5, 1.5);
 	glVertex3f(0.5, -0.5, 1.5);
 	glVertex3f(-0.5, -0.5, 1.5);
 
-	glColor3f(0.0, 1.0, 0.0);	//лева€ грань
+	glColor3f(0.0, 1.0, 0.0);	
 	glVertex3f(-0.5, 0.5, 1.5);
 	glVertex3f(-0.5, -0.5, 1.5);
 	glVertex3f(-0.5, -0.5, 2.5);
 	glVertex3f(-0.5, 0.5, 2.5);
 
-	glColor3f(0.0, 0.0, 1.0);	//права€ грань
+	glColor3f(0.0, 0.0, 1.0);	
 	glVertex3f(0.5, 0.5, 1.5);
 	glVertex3f(0.5, -0.5, 1.5);
 	glVertex3f(0.5, -0.5, 2.5);
 	glVertex3f(0.5, 0.5, 2.5);
 
-	glColor3f(1.0, 1.0, 0.0);	//нижн€€ грань
+	glColor3f(1.0, 1.0, 0.0);	
 	glVertex3f(0.5, -0.5, 1.5);
 	glVertex3f(-0.5, -0.5, 2.5);
 	glVertex3f(-0.5, -0.5, 2.5);
 	glVertex3f(0.5, -0.5, 2.5);
 
-	glColor3f(1.0, 1.0, 1.0);	//верхн€€ грань
+	glColor3f(1.0, 1.0, 1.0);	
 	glVertex3f(-0.5, 0.5, 1.5);
 	glVertex3f(0.5, 0.5, 1.5);
 	glVertex3f(0.5, 0.5, 2.5);
@@ -159,32 +159,6 @@ void fooKeyboard(unsigned char key, int xx, int yy)
 	{
 		exit(0);
 	}
-	/*else if (GetKeyState('D') < 0)
-	{
-		x += cos(pitch) * cos(yaw) * speedCameraMove;
-		z += cos(yaw) * sin(pitch) * speedCameraMove;
-	}
-	else if (GetKeyState('A') < 0)
-	{
-		x -= cos(pitch) * cos(yaw) * speedCameraMove;
-		z -= cos(yaw) * sin(pitch) * speedCameraMove;
-	}*/
-
-	/*switch (key) {
-	case 32:
-		y += speedCameraMove;
-		break;
-	case :
-		y -= speedCameraMove;
-		break;
-	case 87:
-		x += 2;
-		z += 2;
-		break;
-	case 27:
-		exit(0);
-		break;
-	}*/
 }
 
 void mouseMove(int ax, int ay)
@@ -214,7 +188,7 @@ void quad(void)
 		0.0f, 1.0f, 0.0f);
 
 
-	plate.rotate[0] = 40.0, plate.rotate[1] = 1, plate.rotate[2] = 0, plate.rotate[3] = 0;
+	plate.rotate[0] = 45.0, plate.rotate[1] = 0, plate.rotate[2] = 0;
 	plate.size[0] = 5, plate.size[1] = 5;
 	plate.color[0] = 0.23, plate.color[0] = 0.8, plate.color[0] = 0.25;
 	//plate.position[2] = 3;
