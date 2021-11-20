@@ -14,12 +14,12 @@ int sizeWindowY = GetSystemMetrics(SM_CYSCREEN);
 
 GLfloat yaw = 0.0;
 GLfloat pitch = 0.0;
-float x = -15.0, z = 15.0, y = 8.0;
+float x = 0.0, z = 0.0, y = 8.0;
 
 float lx = 0.69, lz = -0.63, ly = -0.35;
 
 Plane plate;
-
+int t;
 void plane()
 {
 	glNormal3f(0, 0, 1);
@@ -127,10 +127,18 @@ void WindowOpen(int a, int h)
 	glViewport(0, 0, a, h);
 	gluPerspective(45, ratio, 1, 1000);
 	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	glEnable(GL_DEPTH_TEST);
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_COLOR_MATERIAL);
+	//glDisable(GL_LIGHTING);
+	//glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHT0);
+	//glEnable(GL_COLOR_MATERIAL);
+	
 }
 
 void fooKeyboard(unsigned char key, int xx, int yy)
@@ -178,27 +186,33 @@ void mouseMove(int ax, int ay)
 void quad(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	glEnable(GL_DEPTH_TEST);
-
+	
 	glLoadIdentity();
 
 	gluLookAt(x, y, z,
-		lx + x, ly + y, lz + z,
-		0.0f, 1.0f, 0.0f);
+			  lx + x, ly + y, lz + z,
+			  0.0f, 1.0f, 0.0f);
 
-
-	plate.rotate[0] = 45.0, plate.rotate[1] = 0, plate.rotate[2] = 0;
+	plate.rotate[0] = -90.0, plate.rotate[1] = 0, plate.rotate[2] = 0;
 	plate.size[0] = 5, plate.size[1] = 5;
 	plate.color[0] = 0.23, plate.color[0] = 0.8, plate.color[0] = 0.25;
 	//plate.position[2] = 3;
+	
+	glPushMatrix();
+	glPushMatrix();
+	glRotatef(t, 1, 0, 0);
+	float position[] = { 0, 0, 1, 0 };
+	glLightfv(GL_LIGHT0, GL_POSITION, position);
+	glPopMatrix();
+
 	plate.render();
 
-
-	cube();
-	object();
+	glPopMatrix();
+	//cube();
+	//object();
 	//plane();
 	glutSwapBuffers();
+	t++;
 }
 
 int main(int argc, char* argv[])

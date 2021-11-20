@@ -27,6 +27,7 @@ public:
 	{
 		glPushMatrix();
 		rotation();
+		glNormal3f(position[0], position[1], position[2] + 1);
 		glBegin(GL_QUADS);
 		glColor3f(color[0], color[1], color[2]);
 		  glVertex3f(position[0] - size[0] / 2, position[1] - size[1] / 2, position[2]);
@@ -36,4 +37,16 @@ public:
 		glEnd();
 		glPopMatrix();
 	}
+};
+
+
+class lightSource
+{
+public:
+	float rotate[3] = { 0, 0, 0 };
+	float size[2] = { 0, 0 };
+	float position[4] = { 0, 0, 0, 0};
+	float color[3] = { 0, 0, 0 };
+
+
 };
