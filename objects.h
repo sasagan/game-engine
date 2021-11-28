@@ -28,8 +28,10 @@ public:
 		glPushMatrix();
 		rotation();
 		glNormal3f(position[0], position[1], position[2] + 1);
+		
 		glBegin(GL_QUADS);
 		glColor3f(color[0], color[1], color[2]);
+		
 		  glVertex3f(position[0] - size[0] / 2, position[1] - size[1] / 2, position[2]);
 		  glVertex3f(position[0] - size[0] / 2, position[1] + size[1] / 2, position[2]);
 		  glVertex3f(position[0] + size[0] / 2, position[1] + size[1] / 2, position[2]);

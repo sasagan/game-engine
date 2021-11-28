@@ -14,11 +14,12 @@ int sizeWindowY = GetSystemMetrics(SM_CYSCREEN);
 
 GLfloat yaw = 0.0;
 GLfloat pitch = 0.0;
-float x = 0.0, z = 0.0, y = 8.0;
+float x = -7.0, z = 0.0, y = 3.0;
 
 float lx = 0.69, lz = -0.63, ly = -0.35;
 
 Plane plate;
+Plane square;
 int t;
 void plane()
 {
@@ -129,15 +130,6 @@ void WindowOpen(int a, int h)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	glEnable(GL_DEPTH_TEST);
-
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-	glEnable(GL_COLOR_MATERIAL);
-	//glDisable(GL_LIGHTING);
-	//glEnable(GL_LIGHTING);
-	//glEnable(GL_LIGHT0);
-	//glEnable(GL_COLOR_MATERIAL);
 	
 }
 
@@ -186,6 +178,16 @@ void mouseMove(int ax, int ay)
 void quad(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_CULL_FACE);
+	//glFrontFace(GL_CCW);
+	//glCullFace(GL_BACK);
+
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT1);
+	glEnable(GL_COLOR_MATERIAL);
+	glMatrixMode(GL_MODELVIEW);
 	
 	glLoadIdentity();
 
@@ -194,25 +196,47 @@ void quad(void)
 			  0.0f, 1.0f, 0.0f);
 
 	plate.rotate[0] = -90.0, plate.rotate[1] = 0, plate.rotate[2] = 0;
-	plate.size[0] = 5, plate.size[1] = 5;
-	plate.color[0] = 0.23, plate.color[0] = 0.8, plate.color[0] = 0.25;
+	plate.size[0] = 1, plate.size[1] = 1;
+	plate.color[0] = 0.23, plate.color[0] = 1, plate.color[0] = 0.25;
 	//plate.position[2] = 3;
 	
 	glPushMatrix();
+	
 	glPushMatrix();
+	
+
+	square.size[0] = 1, square.size[1] = 1;
+	square.color[1] = 1;
 	glRotatef(t, 1, 0, 0);
+	float light_ambient[] = { 1.0,1.0,1.0,0.1 };
 	float position[] = { 0, 0, 1, 0 };
 	glLightfv(GL_LIGHT0, GL_POSITION, position);
-	glPopMatrix();
+	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+	 
+	//glLightfv(GL_LIGHT1, GL_AMBIENT, light_ambient);
 
+	glTranslatef(0, 0, 1);
+	glScalef(0.2, 0.2, 0.2);
+	square.render();
+
+	
+	glPopMatrix();
+	//glShadeModel(GL_SMOOTH);
+	
+	//glLightModelfv(GL_LIGHT_MODEL_AMBIENT, light_ambient);
 	plate.render();
+
+	
+	
+
+	
 
 	glPopMatrix();
 	//cube();
 	//object();
 	//plane();
 	glutSwapBuffers();
-	t++;
+	t+= 1;
 }
 
 int main(int argc, char* argv[])
@@ -221,7 +245,6 @@ int main(int argc, char* argv[])
 
 
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
-
 	glutCreateWindow("Window");
 	glutFullScreen();
 
